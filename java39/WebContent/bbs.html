@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>게시판 글쓰기</h3>
+	<hr color="green">
+	
+	<form action="insert3.jsp">
+	
+	번호 <input type="text" name="no"> <br>
+	작성자 <input type="text" name="writer"> <br>
+	제목 <input type="text" name="title"> <br>
+	내용 <input type="text" name="content"> <br>
+	<button type="submit">글쓰기</button>
+	</form> 
+	
+	<ul>
+		<li>
+			<a href="all4.jsp">전체 검색</a>
+		</li>
+		
+		<li>조건검색
+			<form action="all5.jsp"><!-- title -->
+				title 검색 <input type="text=name" name="title">
+				<button type="submit">검색 시작(항목전체일치)</button>
+			</form>
+			<hr>
+		</li>
+	
+		<li>
+			<form action="all6.jsp"><!-- content -->
+				content 검색 <input type="text=name" name="content">
+				<button type="submit">검색 시작(항목부분일치)</button>
+			</form>
+		</li>
+		
+	</ul>
+</body>
+</html>
