@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	function sum() {
+		a1 = prompt('숫자1 입력하시오')
+		
+		a2 = prompt('숫자2 입력하시오')
+		
+		
+		sum = parseInt(a1) + parseInt(a2)
+			
+		alert('두수의 합은' + sum)
+	}
+	function check() {
+		data = prompt('회원가입할 id를 입력하세요')
+		result = false;
+		fu
+		if (data.length == 0) {
+			alert("id를 입력하시오")
+		} else {
+			alert("당신이 입력한 id는" + data)
+			result = true;
+		}
+		return result;
+	}
+	function same() {
+		//data1 = prompt('숫자1 입력하시오')
+		//data2 = prompt('숫자2 입력하시오')
+		n1 = document.getElementById('a1').value;
+		n2 = document.getElementById('a2').value;
+		
+		
+		
+		if (n1 == n2) {
+			alert("입력 두 숫자 동일 ")
+		} else {
+			alert("입력한 값 동일하지않음")
+		}
+		//result2 = check()
+		//alert('id체크한 결과는' + result2)
+	}
+</script>
+</head>
+<body>
+	<button onclick="sum()">더하기</button>
+	<button onclick="check()">입력값 넣었는지 체크</button>
+	<hr color = "red">
+	패스워드1 : <input type="text" name="pw1" id="a1"><br>
+	패스워드2 : <input type="text" name="pw2" id="a2"><br>
+	
+	<button onclick="same()">입력값 동일한지 체크</button>
+</body>
+</html>

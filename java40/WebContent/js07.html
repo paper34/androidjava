@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function check1() { //입력확인
+		document.getElementById('id2');
+
+		id2Value = id2.value;
+
+		if (id2Value.length == 0) {
+			document.getElementById('result').innerHTML = '<font color=red><b>아이디를 입력해주세요.';
+		} else {
+			document.getElementById('result').innerHTML = '<font color=red><b>아이디가 입력되어있습니다.';
+		}
+	}
+
+	function check2() { //5글자 이상
+		document.getElementById('id2');
+
+		id2Value = id2.value;
+
+		if (id2Value.length < 5) {
+			document.getElementById('result').innerHTML = '<font color=red><b>5자 이상인지 확인하십쇼.';
+		}
+	}
+
+	function same() { //패스워드 동일
+		n1 = document.getElementById('p1').value;
+		n2 = document.getElementById('p2').value;
+
+		if (n1 == n2) {
+			document.getElementById('result').innerHTML = '<font color=red><b>비밀번호가 동일합니다.';
+		} else {
+			document.getElementById('result').innerHTML = '<font color=red><b>비밀번호가 동일하지않습니다.';
+		}
+	}
+
+	function check3() { //중복확인
+		id = document.getElementById('id2').value;
+		p1v = document.getElementById('p1').value;
+		p2v = document.getElementById('p2').value;
+
+		if (p1v == p2v) {
+			location.href = 'check.jsp?id=' + id + '&pw=' + p1v;
+			
+		} else {
+			//alert('패스워드가 다름');
+			document.getElementById('result').innerHTML = '<font color=red><b>패스워드가 다름.';		
+		}
+	}
+</script>
+</head>
+<body>
+	<h1 align="center" style="color: green; font-size: 70px">NAVER</h1>
+	<br>
+	<p align="center">
+		아이디 <br><input type="text" id="id2">
+	</p>
+
+	<br>
+	<p align="center">
+		비밀번호<br> <input type="text" id="p1">
+	</p>
+	<br>
+	<p align="center">
+		비밀번호 재확인<br> <input type="text" id="p2">
+	</p>
+	<div id='result' align="center"></div>
+	<br>
+	<hr color="green3">
+	
+	
+	
+	<div align="center">
+		<button onclick="check1()">아이디입력확인</button>
+		<button onclick="check2()">아이디글자가 5이상인지 확인</button>
+		<button onclick="check3()">아이디중복확인</button>
+		<button onclick="same()">비밀번호 동일확인</button>
+	</div>
+</body>
+</html>

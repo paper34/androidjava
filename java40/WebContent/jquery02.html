@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$('button').click(function() {
+
+		pw1Value = $('#pw1').val() //태그사이의 텍스트는 text()
+		pw2Value = $('#pw2').val()
+
+		if (pw1Value == pw2Value) {
+			$('h3').text('패스워드가 동일합니다')
+		} else {
+			$('h3').text('패스워드가 동일하지 않습니다')
+		}
+	})
+</script>
+</head>
+<body>
+	
+	비밀번호 <input type="text" id='pw1'> <br>
+	비밀번호 재확인 <input type="text" id='pw2'> <br>
+	<button>확인</button>
+	<hr color="orange">
+	<h3></h3>
+</body>
+</html>
