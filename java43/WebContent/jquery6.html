@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#b1').click(function() {
+			$.ajax({
+				url : "check2.jsp",
+				data : {
+					id : $('#id').val()
+				},
+				success : function(result) {
+					$('#d1').append(result+ "<br>");
+				} // success
+
+			}) //ajax
+		}) // b1 check
+
+		$('#b2').click(function() {
+			$.ajax({
+				url : "pay.jsp",
+				data : {
+					pay : $('#pay').val(),
+					paym : $('#paym').val(),
+				},
+				success : function(result) {
+					$('#d2').append(result + "<br>")
+
+				} // success
+
+			}) //ajax
+		}) // b2 check
+
+		
+
+		$('#b4').click(function() {
+			alert('b4를 클릭함.')
+			$.ajax({
+				url : "random.jsp",
+				data : {
+					tel : $('#tel').val()
+				},
+				success : function(result) {
+					alert(result)
+					$('#d2').append(result + '<br>')
+				}, // success
+				error: function(e) {
+					alert('에러정보' + e)
+				}
+			}) //ajax
+		}) // b4 check
+
+	})// ready end
+</script>
+
+</head>
+<body>
+	<br> 가입할 id입력:
+	<input type="text" id="id">
+	<button id="b1">아이디 중복체크</button>
+	<hr>
+	<div id="d1"></div>
+	
+	
+	결제금액: <input type="text" id="pay"> <br>
+	
+	결제방법: <input type="text" id="paym" value="1)계좌 2)카드 3)휴대폰"> <br>
+	<button id="b2">결제하기</button>
+	
+	<hr>
+	인증받을 전화번호 입력: <input type="text" id="tel"> <br>
+	<button id="b4">인증번호</button>
+	
+	
+	<hr>
+	<div id="d2"></div>
+</body>
+</html>

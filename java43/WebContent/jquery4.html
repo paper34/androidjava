@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#b1').click(function() {
+			$.ajax({
+				url : "check.jsp",
+				data : {
+					id : $('#id').val()
+				},
+				success : function(result) {
+					// 0이면, id가 없음
+					// 1이면, id가 있음
+					if (result == 0) {
+						$('#d1').html('<font color=blue>사용가능한 id입니다 </font>');
+					} else {
+						$('#d1').html('<font color=red>사용불가능한 id입니다 </font>');
+					}
+				} // succees
+
+			}) // ajax
+			
+		}) //b1 check
+		
+		$('#b2').click(function() {
+				$.ajax({
+				url : "reply.jsp",
+				data : {
+					id : $('#reply').val()
+				},
+				success : function(result) {
+					$('#d2').append(result)
+				
+				} // success
+				
+			})// ajax check
+		
+	})// b2 check
+	
+	}// ready end
+</script>
+
+</head>
+<body>
+	<br> 가입할 id입력:
+	<input type="text" id="id">
+	<button id="b1">아이디 중복체크</button>
+	<hr>
+	<div id="d1"></div>
+	<br> 댓글 텍스트입력:
+	<input type="text" id="reply">
+	<button id="b2">댓글달기(텍스트)</button>
+	<button id="b3">댓글달기(이미지)</button>
+	<button id="b4">댓글달기(텍스트+이미지)</button>
+	<hr>
+	<div id="d2"></div>
+</body>
+</html>
