@@ -1,0 +1,122 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.btn {
+	border: 1px solid lightgrey;
+}
+.zzimed {
+	background: linear-gradient(#FFD57E, #FCA652) !important;
+}
+
+div#main-info-wrapper {
+	width: 100%;
+	height: 400px;
+	margin: 0;
+}
+
+div#main-info-image img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 400px;
+	object-fit: cover;
+	user-select: none;
+}
+
+div#main-info {
+	position: absolute;
+	color: white;
+	text-shadow: 0 0 7px #AC4B1C;
+	padding: 30px 20px;
+	top: 0;
+	left: 200px;
+	width: 480px;
+	height: 400px;
+	background-color: #FCA65280;
+	user-select: none;
+}
+
+div#main-info.second {
+	color: white;
+	text-shadow: 0 0 7px #AC4B1C;
+	top: 350px;
+	height: 150px;
+	background-color: transparent;
+}
+
+hr {
+	border-top: 1px dashed #bbb;
+	border-bottom: 1px dashed #fff;
+}
+
+div#main-info table td:first-child {
+	font-weight: bold;
+}
+
+div#item-pay-wrapper {
+	width: 600px;
+	margin: 10px auto;
+	justify-content: center; 
+}
+
+div#item-pay-wrapper button { margin: 0 20px; }
+
+div#item-menu-wrapper {
+	width: 900px;
+	margin: 10px auto;
+}
+
+div#item-menu-wrapper ul {
+	padding-left: 0;
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+	margin: auto;
+}
+
+div#item-menu-wrapper li {
+	text-align: center;
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	
+}
+
+li button.btn { 
+	width: 150px;
+	height: 150px;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	font-size: 20px;
+	line-height: 1.7em;
+	padding: 15px 0px;
+}
+
+div#item-text {
+	font-size: 16px;
+	overflow: hidden;
+	max-width: 1000px;
+	margin: 20px auto;
+}
+
+div#map {
+	width:800px;
+	height: 600px;
+	margin: 0px auto;
+}
+div#review table,div#review td{
+	border-collapse: separate;
+	border-spacing: 10px;
+}
+
+div#review-thread {
+	
+}

@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+
+html {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	
+}
+
+body {
+	margin: 0;
+	height: 100%
+}
+/* Style the header */
+
+
+.header {
+	background-color: #ef6d00;
+	padding: 10px;
+	text-align: center;
+	
+	
+}
+
+.login a:hover {
+	color: #ef6d00;
+}
+
+
+
+.navbar-nav li a:hover {
+    color: #ef6d00;
+}
+
+/* Style the top navigation bar */
+.topnav {
+	border-top: 1px solid;
+	border-top-color: lightgray;
+	border-bottom: 1px solid;
+	border-bottom-color: lightgray;
+	overflow: hidden;
+	background-color: rgb(255, 255, 255);
+}
+
+.icon {
+	background-color: white;
+	height: 60px;
+	position: relative;
+	left: 450px
+}
+/* Style the topnav links */
+.topnav a {
+	float: left;
+	display: block;
+	color: rgb(0, 0, 0);
+	text-align: center;
+	padding: 14px 50px;
+	text-decoration: none;
+	position: relative;
+	/* left: 450px; */
+	left: 350px;
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+.nav {
+	position: relative;
+	top: 15px;
+	
+}
+
+nav:hover {
+	color: #ef6d00;
+	
+}
+
+
+
+/* Change color on hover */
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+	float: left;
+	padding: 10px;
+}
+/* Left and right column */
+.column.side {
+	width: 25%;
+}
+/* Middle column */
+.column.middle {
+	width: 50%;
+	height: 1000px;
+	
+}
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+	.column.side, .column.middle {
+		width: 100%;
+	}
+}
+/* Style the footer */
+.footer {
+	
+	position: static;
+	left: 0;
+	bottom: 0;
+	height: 60px;
+	text-align: center;
+	width: 100%;
+	
+}
