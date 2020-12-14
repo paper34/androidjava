@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin_report">
+
+<select id="reportlist" resultType="adminreportVO"> 
+   select ar.admin_report_no,q.user_id,q.report_id,q.qa_no,q.qa_title,q.qa_content,q.qa_date,q.qa_service 
+   from admin_report ar join question q on ar.qa_no = q.qa_no 
+   join user u on ar.user_id = u.user_id order by ar.admin_report_no desc
+</select>
+
+<select id="reportdetail" resultType="adminreportVO">
+  select ar.user_id,q.report_id,q.qa_no,q.qa_title,q.qa_content,q.qa_status from admin_report ar join question q on ar.qa_no = q.qa_no where q.user_id= #{user_id}
+</select>
+
+<update id="userreport" parameterType="adminreportVO">
+	update user set user_black = '1' where user_id = #{report_id}   
+</update>
+
+<update id="userrelease" parameterType="adminreportVO">
+	update user set user_black = '0' where user_id = #{report_id}   
+</update>
+
+
+ 
+
+
+
+</mapper>

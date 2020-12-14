@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/line4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Main4Activity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:background="#C5CAE9"
+        android:onClick="onClickShowAlert"
+        android:text="경고창 띄우기"
+        android:textColor="#7E57C2"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:layout_marginTop="10dp"
+        android:background="#C5CAE9"
+        android:onClick="onClickShowDate"
+        android:text="날짜보이기"
+        android:textColor="#7E57C2"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:layout_marginTop="10dp"
+        android:background="#D1C4E9"
+        android:onClick="onClickLogPrint"
+        android:text="로그프린트연결"
+        android:textColor="#9575CD"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:layout_marginTop="10dp"
+        android:background="#B3E5FC"
+        android:onClick="onClickChangeText"
+        android:text="오늘 요일은?"
+        android:textColor="#F8BBD0"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+</LinearLayout>

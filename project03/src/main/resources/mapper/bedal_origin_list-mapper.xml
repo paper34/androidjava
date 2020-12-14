@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bedal_origin_list">
+
+	<!-- 기본값에서 배송전으로 변경 --><!-- 혜정 -->
+	<update id="update" parameterType="bedal_origin_listVO">
+		update bedal_list set bedal_list_status = '-1',  bedal_id = #{bedal_id} where bedal_list_id = #{bedal_list_id}
+	</update>
+
+</mapper>

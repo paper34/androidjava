@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin_user">
+
+<select id="userlist" resultType="adminuserVO">select a.admin_userno,u.user_id,u.user_name,u.user_date,u.user_black from admin_user a join user u on a.user_id 
+												= u.user_id order by admin_userno desc
+</select>
+<select id="userone" resultType="adminuserVO">select * from user where user_id = #{user_id}
+</select>
+<delete id="userdelete" parameterType="adminuserVO">delete a,u from admin_user as a left join user as u on a.user_id = u.user_id 
+													where a.user_id = #{user_id}
+</delete>
+
+</mapper>

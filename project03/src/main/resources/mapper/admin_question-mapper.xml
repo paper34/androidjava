@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin_qa">
+
+<select id="questionlist" resultType="adminqaVO"> 
+   select aq.admin_question_no,q.user_id,u.user_name,q.qa_no,q.qa_title,q.qa_content,aq.admin_answer,q.qa_date,q.qa_status,q.qa_service from admin_question aq join question q on aq.qa_no = q.qa_no 
+   join user u on aq.user_id = u.user_id order by aq.admin_question_no desc
+</select>
+
+<select id="questiondetail" resultType="adminqaVO">
+  select aq.user_id,q.qa_no,q.qa_title,q.qa_content,q.qa_status from admin_question aq join question q on aq.qa_no = q.qa_no where q.qa_no= #{qa_no}
+</select>
+
+<update id="questionanswer" parameterType="adminqaVO">
+	update admin_question as aq left join question as q on aq.qa_no = q.qa_no set aq.admin_answer = #{admin_answer},q.qa_status = '1' where aq.qa_no = #{qa_no}  
+</update>
+
+<delete id="questiondelete" parameterType="adminqaVO">
+	delete aq,q from admin_question as aq left join question as q on aq.qa_no = q.qa_no  where aq.qa_no = #{qa_no}
+</delete> 
+ 
+
+
+
+</mapper>

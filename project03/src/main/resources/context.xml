@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+<!-- 3. mybatis 원래 객체 -->
+<bean id="mybatis" class="org.mybatis.spring.SqlSessionTemplate">
+	<!-- 파타메터있는 생성자 호출 시 , 생성자 파라메터 순서대로 써준다. -->
+	<constructor-arg ref="config"></constructor-arg>
+</bean>
+
+<!-- 2. mybatis 관련 - 설정과 관련된 객체 -->
+<bean id="config" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	<property name="dataSource" ref="dbcp"></property>
+</bean>
+
+<!-- 1. dbcp -->
+<bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+	<property name="driverClassName" value="${jdbc.drvier}"></property>
+	<property name="url" value="${jdbc.url}"></property>
+	<property name="username" value="${jdbc.id}"></property>
+	<property name="password" value="${jdbc.pw}"></property>
+</bean>
+
+
+<bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="dlwjdgn8720@gmail.com" />
+      <property name="password" value="ehdwls63!!" />
+      <property name="javaMailProperties">
+         <props>
+               <prop key="mail.transport.protocol">smtp</prop>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.starttls.enable">true</prop>
+              <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+               <prop key="mail.debug">true</prop> 
+         </props>
+      </property>
+    </bean>
+
+</beans>

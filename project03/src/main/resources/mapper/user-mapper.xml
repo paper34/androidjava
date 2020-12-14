@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="userVO">
+		insert into user values (#{user_id}, #{user_pw}, #{user_name}, #{user_nickname}, #{user_age}, 
+		#{user_tel}, #{user_email}, #{user_address}, now(), 0)
+	</insert>
+	
+	<!-- admin user 테이블 -->
+	<insert id="admin_join" parameterType="adminuserVO">
+		insert into admin_user values(null,#{user_id})
+	</insert>
+
+	<!-- 회원가입-ID중복체크 -->
+	<select id="check_id" resultType="int">
+		select count(*) from user where user_id = #{user_id}
+	</select>
+
+	<!-- 로그인 -->
+	<select id="login" resultType="int">
+		select count(*) from user where user_id = #{user_id} and user_pw = #{user_pw} and user_black = '0'
+	</select>
+
+	<!-- detail 화면에서 찜하기(insert) -->
+	<insert id="zzim" parameterType="zzimVO">
+		insert into zzim values (null, #{user_id}, #{product_id})
+	</insert>
+
+	<!-- detail 화면에서 찜삭제(delete) -->
+	<delete id="zzim_delete" parameterType="zzimVO">
+		delete from zzim where user_id = #{user_id} and product_id = #{product_id}
+	</delete>
+
+	<!-- 찜체크 -->
+	<select id="zzim_check" resultType="int">
+		select count(*) from zzim where user_id = #{user_id} and product_id = #{product_id}
+	</select>
+
+	<!-- 찜리스트 -->
+	<select id="zzim_list" parameterType="String" resultType="zzimVO">
+		select zz.user_id, pr.product_id, pr.product_price, pr.product_title, pr.product_category
+		from product pr join zzim zz on pr.product_id = zz.product_id where zz.user_id = #{user_id}
+	</select>
+	
+	<!-- 유저 매너평가 리스트 -->
+	<select id="user_review" parameterType="String"  resultType="reviewVO" >
+		select * from user_review where user_id = #{user_id}
+	</select>
+
+	<!-- 알고리즘 찜 리스트 -->
+	<select id="algolist" resultType="algoVO" >
+		select zz.zzim_id, zz.user_id, zz.product_id, pr.product_price, pr.product_category,
+		pr.product_title, pr.product_image, ur.user_age from zzim zz join
+		product pr on zz.product_id  = pr.product_id join user ur on
+		pr.user_id = ur.user_id LIMIT 8
+	</select> 
+
+	<!-- 순수 유저들의 나이만 계산-->
+	<select id="age" resultType="algoVO" >
+		select zz.user_id, ur.user_age from zzim zz join user ur on zz.user_id = ur.user_id where zz.product_id = #{product_id} 
+	</select>
+
+
+ 
+
+</mapper>

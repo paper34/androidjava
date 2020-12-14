@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bedal_user">
+	
+	<!-- 가입 -->
+	<insert id="join" parameterType="bedal_userVO">
+		insert into bedal_user values (#{bedal_id}, #{bedal_pw}, #{bedal_name}, 
+				#{sido1}, #{gugun1}, #{sido2}, #{gugun2},
+			 	#{bedal_tel}, #{bedal_email}, #{bedal_nickname}, #{bedal_vehicle}, #{bedal_image})
+	</insert>
+
+	<!-- id중복체크 -->
+	<select id="check_id" resultType="int" >
+		select count(*) from bedal_user where bedal_id = #{bedal_id}
+	</select>
+
+
+	<!-- 로그인  -->
+	<select id="login" resultType="int" >
+		select count(*) from bedal_user where bedal_id = #{bedal_id} and bedal_pw = #{bedal_pw}
+	</select>
+
+	
+	<!-- 배달 프로필 수정 -->
+	<update id="update" parameterType="bedal_userVO">
+		update bedal_user set bedal_nickname = #{bedal_nickname}, bedal_vehicle = #{bedal_vehicle},
+				sido1 = #{sido1}, gugun1 = #{gugun1}, sido2 = #{sido2}, gugun2 = #{gugun2} where bedal_id = #{bedal_id}
+	</update>
+
+</mapper>
