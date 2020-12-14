@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+   	  <!-- 박창호 -->
+      <typeAlias type="com.trade.project.user.UserVO" alias="userVO"></typeAlias>
+      <typeAlias type="com.trade.project.user.QuestionVO" alias="questionVO"></typeAlias>
+      <typeAlias type="com.trade.project.user.AdminQuestionVO2" alias="adminquestionVO2"></typeAlias>
+      <typeAlias type="com.trade.project.user.ZzimVO" alias="zzimVO"></typeAlias>
+      <typeAlias type="com.trade.project.user.AlgoVO" alias="algoVO"></typeAlias>
+      <typeAlias type="com.trade.project.user.PaymentVO2" alias="paymentVO2"></typeAlias>
+      <typeAlias type="com.trade.project.user.UserReviewVO" alias="reviewVO"></typeAlias>
+      <!-- 이종률 -->
+      <typeAlias type="com.trade.project.product.ReplyVO" alias="replyVO"></typeAlias>
+      <typeAlias type="com.trade.project.product.ProductVO" alias="productVO"></typeAlias>
+      <typeAlias type="com.trade.project.product.ProductUserVO" alias="productuserVO"></typeAlias>
+       <typeAlias type="com.trade.project.product.PaymentVO" alias="paymentVO"></typeAlias>
+       <!-- 조혜정,이정후 -->
+       <typeAlias type="com.trade.project.bedal.BedalListVO" alias="bedal_listVO"></typeAlias>
+		<typeAlias type="com.trade.project.bedal.BedalOriginListVO" alias="bedal_origin_listVO"></typeAlias>
+		<typeAlias type="com.trade.project.bedal.BedalUserVO" alias="bedal_userVO"></typeAlias>
+		<!-- 이정후 -->
+    	<typeAlias type="com.trade.project.admin.AdminUserVO" alias="adminuserVO" />
+      	<typeAlias type="com.trade.project.admin.AdminQuestionVO" alias="adminqaVO" />
+     	<typeAlias type="com.trade.project.admin.AdminReportVO" alias="adminreportVO" />
+     	<typeAlias type="com.trade.project.algolism.qa.AlgolismVO" alias="algolismVO" />
+   </typeAliases>
+   
+   <mappers>
+  		 <!-- 박창호, 이종률  -->
+      <mapper resource="mapper/user-mapper.xml" />
+      <mapper resource="mapper/question-mapper.xml" />
+      <mapper resource="mapper/product-mapper.xml" />
+      <mapper resource="mapper/reply-mapper.xml" />
+      	<!-- 조혜정,이정후 -->
+      <mapper resource="mapper/bedal_list-mapper.xml" />
+      <mapper resource="mapper/bedal_user-mapper.xml" />
+      <mapper resource="mapper/bedal_origin_list-mapper.xml" />
+      <!-- 이정후 -->
+      <mapper resource="mapper/admin_user-mapper.xml"/>
+      <mapper resource="mapper/admin_question-mapper.xml"/>
+      <mapper resource="mapper/admin_report-mapper.xml"/>
+      <mapper resource="mapper/algolism-mapper.xml"/>
+   </mappers>
+</configuration>

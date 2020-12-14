@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="algolismqa">
+	<select id="list_age" parameterType="algolismVO" resultType="algolismVO"><!-- 세대별 나이 나누기 -->
+		select q.qa_no,q.user_id,u.user_name,q.qa_title,q.qa_age,q.qa_count,u.user_age
+		from user u join question q on u.user_id = q.user_id where q.qa_age like '${qa_age}%' limit 5
+	</select>
+	
+	<select id="session_age" resultType="Integer"><!-- 세션 로그인된 유저의 나이 -->
+		select user_age from user where user_id = #{user_id}
+	</select>
+	
+	<select id="detail_algoqa" resultType="algolismVO">
+		select q.qa_no,q.qa_title,aq.admin_answer from question q join admin_question aq on q.qa_no =aq.qa_no
+		where aq.qa_no = #{qa_no}	
+	</select>
+	
+
+</mapper>

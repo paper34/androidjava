@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bedal_list">
+	
+	<!-- 유저주소와 배달유저 배달지역이 같고 상품명, 배달지역, 거래가격, 거래날짜 검색--><!-- 혜정@@ -->
+	<select id="algolist"  resultType="bedal_listVO">
+		select bl.bedal_list_id, p.product_title, u.user_address, py.payment_price, 
+		py.payment_date, p.product_image, py.payment_id 
+		from bedal_list bl, product p, payment py, `user` u, bedal_user bu 
+		where bl.product_id = p.product_id and bl.user_id = u.user_id and
+		bl.payment_id = py.payment_id and bu.bedal_id = #{bedal_id} and bedal_list_status = '-3' and
+		((sido1 = substring_index(u.user_address, " ", 1) and
+		gugun1 = substring_index(substring_index(u.user_address, " ", 2), " ", -1)) or
+		(sido2 = substring_index(u.user_address, " ", 1) and
+		gugun2 = substring_index(substring_index(u.user_address, " ", 2), " ", -1)));
+	</select>
+	
+	<!-- 배달 승인 내역 --><!-- 혜정@@ -->
+	<select id="approval" resultType="bedal_listVO">
+		select p.product_title from product p, bedal_list bl, bedal_user bu 
+		where p.product_id=bl.product_id and bedal_list_status = '-1' and bu.bedal_id=#{bedal_id};
+	</select>
+	
+	
+	<!-- 최근 조회 목록 --><!-- 혜정@@ -->
+	<select id="lately" resultType="bedal_listVO">
+		select distinct bl.bedal_list_id, p.product_title, u.user_address, py.payment_price 
+		from bedal_list bl, product p, payment py, `user` u, bedal_user bu 
+		where bl.product_id = p.product_id and bl.user_id = u.user_id and
+		bl.payment_id = py.payment_id and bl.bedal_list_id = #{bedal_list_id} and bedal_list_status = '-3' and
+		((sido1 = substring_index(u.user_address, " ", 1) and
+		gugun1 = substring_index(substring_index(u.user_address, " ", 2), " ", -1)) or
+		(sido2 = substring_index(u.user_address, " ", 1) and
+		gugun2 = substring_index(substring_index(u.user_address, " ", 2), " ", -1))) ;
+	</select>
+	
+	
+	<!-- 배달리스트 뽑아오기 정후-->
+	<select resultType="bedal_listVO" id="list">
+		select bl.bedal_list_id,bl.bedal_id ,bl.user_id ,p.product_title,u.user_address,
+         py.payment_price ,bl.bedal_list_status 
+         from bedal_list bl join bedal_user bu on bl.bedal_id = bu.bedal_id 
+         join user u on bl.user_id = u.user_id join product p on bl.product_id = p.product_id 
+         join payment py on bl.payment_id = py.payment_id where (bl.bedal_list_status = '-1' 
+         OR bl.bedal_list_status = '0' OR bl.bedal_list_status = '1' OR bl.bedal_list_status = '-2')
+	</select>
+
+
+	<!-- 배달리스트 뽑아오기 정후-->
+	<select resultType="bedal_listVO" id="one">
+		select bl.bedal_list_id,bl.bedal_id ,bl.user_id ,p.product_title,u.user_email,u.user_name,
+         py.payment_price ,bl.bedal_list_status,p.product_image,u.user_address
+         from bedal_list bl join bedal_user bu on bl.bedal_id = bu.bedal_id 
+         join user u on bl.user_id = u.user_id join product p on bl.product_id = p.product_id
+         join payment py on bl.payment_id = py.payment_id where bl.bedal_list_id = #{bedal_list_id}
+	</select>
+
+
+	<!-- 배달내역 거절 -2(배달거절) 정후-->
+	<update id="reject_update" parameterType="bedal_listVO">
+		update bedal_list set bedal_list_status = '-2' where bedal_list_status = #{bedal_list_status} 
+	</update>
+
+
+	<!-- 배달내역 수락 0(배송중) 정후-->
+	<update id="accept_update" parameterType="bedal_listVO">
+		update bedal_list set bedal_list_status = '0' where bedal_list_status = #{bedal_list_status} 
+	</update>
+
+
+	<!-- 배달내역 수락 1(배송완료) 정후-->
+	<update id="done_update" parameterType="bedal_listVO">
+		update bedal_list set bedal_list_status = '1' where bedal_list_status = #{bedal_list_status}
+	</update>
+
+</mapper>

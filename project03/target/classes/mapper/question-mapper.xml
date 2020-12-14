@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="question">
+
+	<!-- Q&A 문의/신고 -->
+	<insert id="insert" parameterType="questionVO">
+		insert into question values ( null, #{user_id}, #{qa_title}, now(), #{qa_content}, #{qa_service}, #{user_id}, 0, 0, 0)
+	</insert>
+	
+	<!-- Q&A 신고유저 id 확인 / 현재사용(X) -->
+	<select id="check_id2" resultType="int" >
+		select count(*) from question where report_id = #{report_id}
+	</select>
+	
+	<!-- Admin Q&A 컬럼 동시 insert -->
+	<insert id="report" parameterType="adminquestionVO2">
+		insert into admin_question values ( null, #{user_id}, LAST_INSERT_ID(), null)
+	</insert>
+	
+	<!-- Admin Q&A 컬럼 동시 insert  admin report 테이블-->
+	<insert id="report2" parameterType="adminquestionVO2">
+		insert into admin_report values ( null, #{user_id}, LAST_INSERT_ID())
+	</insert>
+	
+	<!-- 마이프로필-상품결제내역(list) -->
+	<select id="payment" parameterType="String"  resultType="paymentVO2" >
+	select py.payment_id, py.user_id, py.product_id, py.payment_price, py.payment_date, py.payment_delivery,
+	pr.product_title from payment py join product pr on py.product_id = pr.product_id where py.user_id = #{user_id}
+	</select>
+	
+	
+	<!-- 마이프로필-상대유저매너평가 목록 (list) -->
+	<select id="reviewlist"  parameterType="String" resultType="paymentVO2" >
+		select py.payment_id, py.product_id, pr.user_id from payment py join product pr on pr.product_id = py.product_id where py.payment_id = #{payment_id}
+	</select>
+	
+	
+	
+	
+	
+	
+</mapper>
